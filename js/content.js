@@ -6,7 +6,7 @@
    Just edit the values inside the quotes / arrays, save, and re-publish.
    ========================================================================= */
 
-const SITE_CONTENT = {
+window.SITE_CONTENT = {
 
   brandName: "MAXTRON",
   brandSub: "RACING CLUB",
