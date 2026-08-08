@@ -288,7 +288,7 @@ window.SITE_CONTENT = {
   team: [
     { name: "Mahantayya K. Hiremath", role: "Faculty In-charge" },
     { name: "Dhruva Naik", role: "Club Representative" },
-    { name: "N Sai Pracheet Reddy", role: "Marketing & Management" },
+    { name: "N Sai Pracheet Reddy", role: "Managing Partner" },
     { name: "Team Member", role: "Powertrain Lead" },
     { name: "Team Member", role: "Electronics Lead" },
     { name: "Team Member", role: "Suspension & Braking" },
