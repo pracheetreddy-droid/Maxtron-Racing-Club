@@ -286,14 +286,14 @@ window.SITE_CONTENT = {
 
   // Add / edit team members here — one object per person.
   team: [
-    { name: "Dhruva Naik", role: "Club Representative" },
     { name: "Mahantayya K. Hiremath", role: "Faculty In-charge" },
-    { name: "Team Member", role: "Chassis & Frame Lead" },
+    { name: "Dhruva Naik", role: "Club Representative" },
+    { name: "N Sai Pracheet Reddy", role: "Marketing & Management" },
     { name: "Team Member", role: "Powertrain Lead" },
     { name: "Team Member", role: "Electronics Lead" },
     { name: "Team Member", role: "Suspension & Braking" },
     { name: "Team Member", role: "Manufacturing Lead" },
-    { name: "Team Member", role: "Sponsorship & Management" }
+    { name: "Team Member", role: "Chassis & Frame Lead" }
   ],
 
   cta: {
