@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAXTRON Racing Club | NMIT</title>
+<meta name="description" content="MAXTRON Racing Club — a student-led motorsports engineering team at Nitte Meenakshi Institute of Technology, building two Formula Moto Student prototype motorcycles.">
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Saira+Condensed:ital,wght@0,600;0,700;0,800;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ PRELOADER ============ -->
+<div id="preloader"><div class="loader-bar"></div></div>
+
+<!-- ============ NAVBAR ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="nav-wrap container">
+    <a href="#home" class="brand">
+      <span class="brand-mark">M</span>
+      <span class="brand-text">
+        <strong id="brandName">MAXTRON</strong>
+        <em id="brandSub">RACING CLUB</em>
+      </span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <ul id="navLinks"><!-- injected by js/main.js --></ul>
+    </nav>
+    <a href="#sponsors" class="btn btn-outline nav-cta">Become a Sponsor →</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section id="home" class="hero">
+    <div class="hero-bg">
+      <div class="speed-lines"></div>
+      <svg class="hero-moto" viewBox="0 0 600 340" aria-hidden="true">
+        <use href="#motoSilhouette"></use>
+      </svg>
+    </div>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow" id="heroEyebrow">NMIT · STUDENT MOTORSPORTS ENGINEERING</p>
+        <h1 id="heroTitle">MAXTRON<br><span>RACING CLUB</span></h1>
+        <p class="hero-tag" id="heroTagline">DRIVEN TO DOMINATE</p>
+        <p class="hero-desc" id="heroDesc"></p>
+        <div class="hero-actions">
+          <a href="#project" class="btn btn-primary">Explore Our Project →</a>
+          <a href="#about" class="btn btn-ghost">Learn More →</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue"><span></span>SCROLL DOWN</div>
+  </section>
+
+  <!-- ============ STATS STRIP ============ -->
+  <section class="stats-strip">
+    <div class="container stats-grid" id="statsGrid"><!-- injected --></div>
+  </section>
+
+  <!-- ============ MOTO & DOMAINS (home summary) ============ -->
+  <section class="section moto-domains" id="moto">
+    <div class="container">
+      <p class="eyebrow center">OUR MOTO</p>
+      <h2 class="section-title center" id="motoStatement"></h2>
+      <p class="section-lead center" id="motoLead"></p>
+
+      <div class="domains-head">
+        <p class="eyebrow">WHAT WE BUILD</p>
+        <h2 class="section-title">Engineering Domains We Offer</h2>
+        <p class="section-lead">Every subsystem of our prototype motorcycles is owned end-to-end by a dedicated student engineering domain.</p>
+      </div>
+      <div class="domains-grid" id="domainsGrid"><!-- injected --></div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section about" id="about">
+    <div class="container about-grid">
+      <div class="about-copy">
+        <p class="eyebrow">ABOUT MAXTRON</p>
+        <h2 class="section-title" id="aboutTitle"></h2>
+        <p id="aboutBody1"></p>
+        <p id="aboutBody2"></p>
+        <div class="mv-grid">
+          <div class="mv-card">
+            <h3>Mission</h3>
+            <p id="missionText"></p>
+          </div>
+          <div class="mv-card">
+            <h3>Vision</h3>
+            <p id="visionText"></p>
+          </div>
+        </div>
+      </div>
+      <div class="about-panel">
+        <div class="panel-badge">
+          <span class="badge-ring">
+            <span class="badge-m">M</span>
+          </span>
+          <strong id="badgeName">MAXTRON RACING CLUB</strong>
+          <em id="badgeSub">DRIVEN TO DOMINATE</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECT ============ -->
+  <section class="section project" id="project">
+    <div class="container">
+      <p class="eyebrow">OUR PROJECT</p>
+      <h2 class="section-title" id="projectTitle"></h2>
+      <div class="project-grid">
+        <div class="project-copy">
+          <p id="projectDesc"></p>
+          <ul class="check-list" id="projectFeatures"><!-- injected --></ul>
+          <a href="#specs" class="btn btn-primary">View Technical Details →</a>
+        </div>
+        <div class="pillars-grid" id="pillarsGrid"><!-- injected --></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ROADMAP ============ -->
+  <section class="section roadmap" id="roadmap">
+    <div class="container">
+      <p class="eyebrow center">COMPETITION ROADMAP</p>
+      <h2 class="section-title center" id="roadmapTitle"></h2>
+      <p class="section-lead center" id="roadmapLead"></p>
+      <div class="roadmap-track" id="roadmapTrack"><!-- injected --></div>
+    </div>
+  </section>
+
+  <!-- ============ TECHNICAL SPECS ============ -->
+  <section class="section specs" id="specs">
+    <div class="container">
+      <p class="eyebrow">TECHNICAL SPECIFICATIONS</p>
+      <h2 class="section-title" id="specsTitle">Proposed Prototype Configuration</h2>
+      <p class="section-lead" id="specsLead"></p>
+      <div class="specs-table-wrap">
+        <table class="specs-table" id="specsTable">
+          <thead><tr><th>Category</th><th>Proposed Specification</th></tr></thead>
+          <tbody><!-- injected --></tbody>
+        </table>
+      </div>
+      <p class="specs-note" id="specsNote"></p>
+    </div>
+  </section>
+
+  <!-- ============ REGULATIONS ============ -->
+  <section class="section regulations" id="regulations">
+    <div class="container">
+      <p class="eyebrow">FMAE MOTO STUDENT · TECHNICAL REGULATIONS</p>
+      <h2 class="section-title" id="regsTitle">Rulebook Highlights (Version 5.1, 2026)</h2>
+      <p class="section-lead" id="regsLead"></p>
+      <div class="regs-accordion" id="regsAccordion"><!-- injected --></div>
+      <p class="specs-note">This is a condensed reference. The full FMAE MotoStudent Technical Rulebook v5.1 governs the build — always confirm against the official document before manufacturing.</p>
+    </div>
+  </section>
+
+  <!-- ============ BUDGET ============ -->
+  <section class="section budget" id="budget">
+    <div class="container">
+      <p class="eyebrow">PROJECT FINANCIALS</p>
+      <h2 class="section-title" id="budgetTitle">Budget &amp; Funding Overview</h2>
+      <p class="section-lead" id="budgetLead"></p>
+
+      <div class="budget-grid">
+        <div class="budget-bars" id="budgetBars"><!-- injected --></div>
+        <div class="budget-side">
+          <div class="budget-total-card">
+            <span>Total Estimated Project Budget</span>
+            <strong id="budgetTotal"></strong>
+          </div>
+          <div class="budget-total-card alt">
+            <span>Requested from NMIT</span>
+            <strong id="budgetAsk"></strong>
+          </div>
+          <div class="budget-total-card alt">
+            <span>Via Sponsorship &amp; External Support</span>
+            <strong id="budgetExternal"></strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SPONSORS ============ -->
+  <section class="section sponsors" id="sponsors">
+    <div class="container">
+      <p class="eyebrow center">OUR PARTNERS</p>
+      <h2 class="section-title center" id="sponsorsTitle">Fueling Our Passion</h2>
+      <div class="sponsors-row" id="sponsorsRow"><!-- injected --></div>
+      <div class="center-cta"><a href="#contact" class="btn btn-outline">Become Our Partner →</a></div>
+    </div>
+  </section>
+
+  <!-- ============ TEAM ============ -->
+  <section class="section team" id="team">
+    <div class="container">
+      <p class="eyebrow center">THE PEOPLE BEHIND MAXTRON</p>
+      <h2 class="section-title center" id="teamTitle">Our Team</h2>
+      <div class="team-grid" id="teamGrid"><!-- injected --></div>
+    </div>
+  </section>
+
+  <!-- ============ CTA BANNER ============ -->
+  <section class="cta-banner" id="join">
+    <div class="container cta-inner">
+      <div>
+        <p class="eyebrow">BE A PART OF OUR JOURNEY</p>
+        <h2 id="ctaTitle">DRIVEN TO DOMINATE</h2>
+        <p id="ctaDesc"></p>
+      </div>
+      <a href="#contact" class="btn btn-primary">Get In Touch →</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer" id="contact">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <div class="brand">
+        <span class="brand-mark">M</span>
+        <span class="brand-text">
+          <strong>MAXTRON</strong>
+          <em>RACING CLUB</em>
+        </span>
+      </div>
+      <p id="footerAbout"></p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul id="footerLinks"><!-- injected --></ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <ul class="footer-contact" id="footerContact"><!-- injected --></ul>
+    </div>
+    <div class="footer-col">
+      <h4>Stay Updated</h4>
+      <p>Subscribe for the latest updates and news.</p>
+      <form class="subscribe-form" id="subscribeForm">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit" aria-label="Subscribe">→</button>
+      </form>
+      <p class="form-note" id="subscribeNote" hidden>Thanks! (Connect this form to an email service to make it live.)</p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p id="footerCopy"></p>
+    <p class="footer-credit">Designed with Passion. Built for Performance.</p>
+  </div>
+</footer>
+
+<!-- Reusable inline SVG motorcycle silhouette -->
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="motoSilhouette" viewBox="0 0 600 340">
+    <path d="M60 260c0 33 27 60 60 60s60-27 60-60-27-60-60-60-60 27-60 60zm420 0c0 33 27 60 60 60s60-27 60-60-27-60-60-60-60 27-60 60z" opacity="0"/>
+    <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="120" cy="260" r="58"/>
+      <circle cx="480" cy="260" r="58"/>
+      <circle cx="120" cy="260" r="14"/>
+      <circle cx="480" cy="260" r="14"/>
+      <path d="M120 260 L230 190 L330 200 L420 150 L480 260"/>
+      <path d="M230 190 L260 260 L330 200"/>
+      <path d="M330 200 L360 130 L420 120 L440 150"/>
+      <path d="M420 120 L470 100"/>
+      <path d="M260 260 L120 260"/>
+      <path d="M330 200 L300 260"/>
+      <path d="M180 175 Q230 140 300 150 Q345 156 360 130"/>
+    </g>
+  </symbol>
+</svg>
+
+<script src="js/content.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
