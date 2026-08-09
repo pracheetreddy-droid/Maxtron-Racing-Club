@@ -156,7 +156,7 @@ body.loaded #preloader{opacity:0;visibility:hidden;}
   mask-image:linear-gradient(90deg, transparent, black 30%, black 80%, transparent);
 }
 .hero-moto-img{
-  position:absolute;right:-2%;bottom:6%;width:min(56vw,760px);height:auto;
+  position:absolute;right:-6%;bottom:0%;width:min(72vw,980px);height:auto;
   filter:drop-shadow(0 20px 50px rgba(0,0,0,.6)) saturate(.85) brightness(.92) contrast(1.03);
   -webkit-mask-image:radial-gradient(ellipse 62% 68% at 58% 48%, black 30%, transparent 78%);
           mask-image:radial-gradient(ellipse 62% 68% at 58% 48%, black 30%, transparent 78%);
