@@ -1,5 +1,5 @@
 /* =========================================================
-   MAXTRON RACING CLUB — STYLE SYSTEM
+   MAXTRON RACING CLUB â€” STYLE SYSTEM
    Edit the CSS variables below to re-theme the whole site.
    ========================================================= */
 :root{
@@ -43,6 +43,22 @@ p{margin:0 0 1em;color:var(--muted);}
 .container{max-width:var(--container);margin:0 auto;padding:0 24px;}
 
 ::selection{background:var(--blue);color:#fff;}
+
+.visually-hidden{
+  position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+
+/* ---------- Scroll-reveal animation system ---------- */
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .8s cubic-bezier(.16,.8,.3,1), transform .8s cubic-bezier(.16,.8,.3,1);
+  will-change:opacity, transform;
+}
+.reveal.in-view{opacity:1;transform:translateY(0);}
+.reveal-scale{opacity:0;transform:scale(.94);transition:opacity .8s ease, transform .8s cubic-bezier(.16,.8,.3,1);}
+.reveal-scale.in-view{opacity:1;transform:scale(1);}
 
 /* focus visibility */
 a:focus-visible,button:focus-visible,input:focus-visible{
@@ -92,7 +108,7 @@ body.loaded #preloader{opacity:0;visibility:hidden;}
   transition:background .3s ease, border-color .3s ease;
 }
 .site-header.scrolled{background:rgba(5,7,13,.92);border-bottom-color:var(--panel-border);}
-.nav-wrap{display:flex;align-items:center;gap:28px;padding:14px 24px;}
+.nav-wrap{display:flex;align-items:center;gap:28px;width:100%;padding:14px clamp(20px,4vw,64px);}
 .brand{display:flex;align-items:center;gap:10px;margin-right:auto;}
 .brand-mark{
   width:38px;height:38px;border-radius:50%;
@@ -101,6 +117,12 @@ body.loaded #preloader{opacity:0;visibility:hidden;}
   font-family:var(--font-display);font-weight:800;color:var(--blue-bright);
   box-shadow:0 0 16px rgba(77,141,255,.5);
 }
+.brand-mark-img{
+  width:42px;height:42px;border-radius:50%;object-fit:cover;flex:none;
+  box-shadow:0 0 16px rgba(77,141,255,.45);
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.brand:hover .brand-mark-img{transform:scale(1.08) rotate(-4deg);box-shadow:0 0 24px rgba(77,141,255,.7);}
 .brand-text{display:flex;flex-direction:column;line-height:1.1;}
 .brand-text strong{font-family:var(--font-display);font-size:1.15rem;letter-spacing:1px;}
 .brand-text em{font-style:normal;font-size:.6rem;letter-spacing:2.5px;color:var(--blue-bright);}
@@ -116,26 +138,41 @@ body.loaded #preloader{opacity:0;visibility:hidden;}
 
 /* ---------- Hero ---------- */
 .hero{
-  position:relative;min-height:100vh;display:flex;align-items:center;
-  padding-top:90px;overflow:hidden;
+  position:relative;min-height:100vh;display:flex;align-items:flex-start;
+  padding-top:170px;overflow:hidden;
   background:
     radial-gradient(60% 60% at 78% 30%, rgba(47,111,237,.25), transparent 70%),
     linear-gradient(180deg,#05070d 0%, #060a14 60%, #05070d 100%);
 }
-.hero-bg{position:absolute;inset:0;pointer-events:none;}
+.hero-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(90deg, var(--bg) 0%, rgba(5,7,13,.55) 32%, rgba(5,7,13,.05) 58%, transparent 75%),
+             linear-gradient(0deg, var(--bg) 0%, transparent 22%, transparent 78%, var(--bg) 100%);
+}
 .speed-lines{
   position:absolute;right:-10%;top:0;bottom:0;width:70%;
   background:repeating-linear-gradient(100deg, transparent 0 60px, rgba(47,111,237,.06) 60px 62px);
   mask-image:linear-gradient(90deg, transparent, black 30%, black 80%, transparent);
 }
-.hero-moto{
-  position:absolute;right:2%;bottom:4%;width:min(46vw,620px);height:auto;
-  color:var(--blue-bright);opacity:.9;filter:drop-shadow(0 0 30px rgba(47,111,237,.45));
-  animation:float 6s ease-in-out infinite;
+.hero-moto-img{
+  position:absolute;right:-2%;bottom:-6%;width:min(48vw,640px);height:auto;
+  filter:drop-shadow(0 20px 50px rgba(0,0,0,.6));
+  -webkit-mask-image:radial-gradient(ellipse 75% 85% at 60% 55%, black 45%, transparent 88%);
+          mask-image:radial-gradient(ellipse 75% 85% at 60% 55%, black 45%, transparent 88%);
+  animation:float 7s ease-in-out infinite, fadeInHero 1.4s cubic-bezier(.16,.8,.3,1) both;
+  animation-delay:0s, .2s;
 }
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-.hero-grid{position:relative;z-index:2;}
-.hero-copy{max-width:640px;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+@keyframes fadeInHero{from{opacity:0;transform:translateX(40px) scale(.96);}to{opacity:1;transform:translateX(0) scale(1);}}
+.hero-grid{position:relative;z-index:2;display:flex;align-items:flex-start;min-height:auto;width:100%;padding:0 clamp(20px,4vw,64px);}
+.hero-copy{max-width:640px;display:flex;flex-direction:column;align-items:flex-start;}
+.hero-wordmark{
+  display:block;width:min(85%,520px);height:auto;margin:2px 0 20px;
+  filter:drop-shadow(0 6px 30px rgba(47,111,237,.35));
+  animation:fadeInHero 1s cubic-bezier(.16,.8,.3,1) both;
+  animation-delay:.15s;
+}
 .eyebrow{
   font-family:var(--font-nav);font-weight:700;letter-spacing:3px;font-size:.78rem;
   color:var(--blue-bright);text-transform:uppercase;margin-bottom:14px;
@@ -195,9 +232,10 @@ body.loaded #preloader{opacity:0;visibility:hidden;}
 .domains-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
 .domain-card{
   background:var(--panel);border:1px solid var(--panel-border);border-radius:var(--radius);
-  padding:26px 22px;transition:border-color .25s ease, transform .25s ease;
+  padding:26px 22px;
+  transition:border-color .35s cubic-bezier(.16,.8,.3,1), transform .35s cubic-bezier(.16,.8,.3,1), box-shadow .35s ease;
 }
-.domain-card:hover{border-color:var(--blue);transform:translateY(-4px);}
+.domain-card:hover{border-color:var(--blue);transform:translateY(-6px);box-shadow:0 16px 40px rgba(47,111,237,.18);}
 .domain-icon{
   width:44px;height:44px;border-radius:8px;background:var(--blue-deep);
   display:flex;align-items:center;justify-content:center;color:var(--blue-bright);
@@ -218,23 +256,37 @@ body.loaded #preloader{opacity:0;visibility:hidden;}
   border:1px solid var(--panel-border);min-height:340px;
   display:flex;align-items:center;justify-content:center;
 }
-.panel-badge{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;}
-.badge-ring{
-  width:120px;height:120px;border-radius:50%;border:3px solid var(--blue-bright);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 0 40px rgba(77,141,255,.45), inset 0 0 20px rgba(77,141,255,.2);
+.about-panel{
+  background-image:linear-gradient(160deg, rgba(5,7,13,.55), rgba(5,7,13,.9)), url('../assets/images/hero-bike.png');
+  background-size:cover;background-position:center 20%;
 }
-.badge-m{font-family:var(--font-display);font-size:3rem;font-weight:800;color:var(--white);}
+.panel-badge{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;}
+.badge-logo-img{
+  width:150px;height:150px;border-radius:50%;object-fit:cover;
+  border:3px solid var(--blue-bright);
+  box-shadow:0 0 50px rgba(77,141,255,.5), inset 0 0 20px rgba(77,141,255,.15);
+  transition:transform .4s cubic-bezier(.16,.8,.3,1);
+}
+.about-panel:hover .badge-logo-img{transform:scale(1.05) rotate(-3deg);}
 .panel-badge strong{font-family:var(--font-display);letter-spacing:1.5px;font-size:1.1rem;}
 .panel-badge em{font-style:normal;color:var(--blue-bright);letter-spacing:3px;font-size:.68rem;font-family:var(--font-nav);}
 
 /* ---------- Project ---------- */
 .project{background:var(--bg-alt);}
 .project-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:26px;align-items:start;}
+.project-image{
+  grid-column:1 / -1;order:3;border-radius:16px;overflow:hidden;
+  border:1px solid var(--panel-border);max-height:420px;
+}
+.project-image img{
+  width:100%;height:100%;object-fit:cover;object-position:center 30%;
+  transition:transform .6s cubic-bezier(.16,.8,.3,1);
+}
+.project-image:hover img{transform:scale(1.04);}
 .check-list{margin:22px 0;display:grid;gap:12px;}
 .check-list li{display:flex;gap:10px;align-items:flex-start;font-size:.96rem;color:var(--ink);}
 .check-list li::before{
-  content:'✓';flex:none;width:20px;height:20px;border-radius:50%;background:var(--blue);
+  content:'âœ“';flex:none;width:20px;height:20px;border-radius:50%;background:var(--blue);
   color:#fff;font-size:.7rem;display:flex;align-items:center;justify-content:center;margin-top:2px;
 }
 .pillars-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
@@ -254,7 +306,9 @@ body.loaded #preloader{opacity:0;visibility:hidden;}
 .roadmap-card{
   background:var(--panel);border:1px solid var(--panel-border);border-radius:var(--radius);
   padding:30px 26px;position:relative;
+  transition:transform .35s cubic-bezier(.16,.8,.3,1), box-shadow .35s ease;
 }
+.roadmap-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(47,111,237,.15);}
 .roadmap-card .rc-year{font-family:var(--font-display);font-size:1.6rem;color:var(--blue-bright);font-weight:800;}
 .roadmap-card h3{font-family:var(--font-nav);font-size:1.05rem;margin:8px 0 12px;text-transform:uppercase;letter-spacing:.4px;}
 .roadmap-card p{font-size:.9rem;margin:0;}
@@ -288,7 +342,7 @@ body.loaded #preloader{opacity:0;visibility:hidden;}
 .reg-a-inner{padding:0 22px 20px;}
 .reg-a-inner ul{display:grid;gap:8px;}
 .reg-a-inner li{font-size:.92rem;color:var(--muted);padding-left:16px;position:relative;}
-.reg-a-inner li::before{content:'—';position:absolute;left:0;color:var(--blue-bright);}
+.reg-a-inner li::before{content:'â€”';position:absolute;left:0;color:var(--blue-bright);}
 
 /* ---------- Budget ---------- */
 .budget-grid{display:grid;grid-template-columns:1.4fr .9fr;gap:50px;margin-top:36px;align-items:start;}
@@ -324,7 +378,11 @@ body.loaded #preloader{opacity:0;visibility:hidden;}
 .team-card{
   background:var(--panel);border:1px solid var(--panel-border);border-radius:var(--radius);
   padding:28px 20px;text-align:center;
+  transition:border-color .35s cubic-bezier(.16,.8,.3,1), transform .35s cubic-bezier(.16,.8,.3,1);
 }
+.team-card:hover{border-color:var(--blue);transform:translateY(-5px);}
+.team-card:hover .team-avatar{transform:scale(1.08);border-color:var(--blue-bright);}
+.team-avatar{transition:transform .35s ease, border-color .35s ease;}
 .team-avatar{
   width:70px;height:70px;border-radius:50%;margin:0 auto 16px;
   background:var(--blue-deep);display:flex;align-items:center;justify-content:center;
@@ -336,11 +394,19 @@ body.loaded #preloader{opacity:0;visibility:hidden;}
 
 /* ---------- CTA banner ---------- */
 .cta-banner{
+  position:relative;overflow:hidden;
   background:linear-gradient(120deg,#071228,#0a1a3d 60%,#071228);
   border-top:1px solid var(--panel-border);border-bottom:1px solid var(--panel-border);
   padding:70px 0;
 }
-.cta-inner{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;}
+.cta-banner-img{
+  position:absolute;right:-6%;top:50%;transform:translateY(-50%);
+  width:min(38vw,480px);height:auto;opacity:.5;
+  -webkit-mask-image:linear-gradient(90deg, transparent, black 35%);
+          mask-image:linear-gradient(90deg, transparent, black 35%);
+  pointer-events:none;
+}
+.cta-inner{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;}
 .cta-inner h2{font-size:clamp(1.8rem,3.6vw,2.6rem);text-transform:uppercase;margin:10px 0;color:var(--white);}
 .cta-inner p{max-width:480px;margin:0;}
 
@@ -376,6 +442,8 @@ body.loaded #preloader{opacity:0;visibility:hidden;}
   .budget-grid{grid-template-columns:1fr;}
   .team-grid{grid-template-columns:repeat(2,1fr);}
   .footer-grid{grid-template-columns:1fr 1fr;}
+  .hero-moto-img{width:60vw;opacity:.85;}
+  .cta-banner-img{width:32vw;opacity:.35;}
 }
 @media (max-width:760px){
   .main-nav{
@@ -387,7 +455,11 @@ body.loaded #preloader{opacity:0;visibility:hidden;}
   .main-nav ul{flex-direction:column;gap:22px;font-size:1.1rem;}
   .nav-cta{display:none;}
   .nav-toggle{display:flex;}
-  .hero-moto{opacity:.35;width:80vw;right:-10%;}
+  .hero-moto-img{opacity:.3;width:85vw;right:-15%;bottom:-6%;}
+  .hero-wordmark{width:100%;}
+  .hero{padding-top:120px;}
+  .nav-wrap{padding:14px 20px;}
+  .hero-grid{padding:0 20px;}
   .stats-grid{grid-template-columns:1fr 1fr;}
   .domains-grid{grid-template-columns:1fr;}
   .pillars-grid{grid-template-columns:1fr;}
@@ -396,5 +468,9 @@ body.loaded #preloader{opacity:0;visibility:hidden;}
   .bar-row{grid-template-columns:1fr;gap:6px;}
   .bar-amt{text-align:left;}
   .cta-inner{flex-direction:column;align-items:flex-start;}
+  .cta-banner-img{display:none;}
+  .project-image{max-height:260px;}
+  .badge-logo-img{width:120px;height:120px;}
   .section{padding:70px 0;}
+  .reveal{transform:translateY(18px);}
 }
