@@ -57,9 +57,9 @@
   $("#motoStatement").textContent = C.moto.statement;
   $("#motoLead").textContent = C.moto.lead;
   const domainsGrid = $("#domainsGrid");
-  C.domains.forEach((d) => {
+  C.domains.forEach((d, i) => {
     domainsGrid.appendChild(
-      el("div", { class: "domain-card" }, [
+      el("div", { class: "domain-card reveal", style: `transition-delay:${(i % 4) * 90}ms` }, [
         el("div", { class: "domain-icon", text: d.icon }),
         el("h3", { text: d.title }),
         el("p", { text: d.desc })
@@ -80,9 +80,9 @@
   const featuresList = $("#projectFeatures");
   C.project.features.forEach((f) => featuresList.appendChild(el("li", { text: f })));
   const pillarsGrid = $("#pillarsGrid");
-  C.project.pillars.forEach((p) => {
+  C.project.pillars.forEach((p, i) => {
     pillarsGrid.appendChild(
-      el("div", { class: "pillar-card" }, [
+      el("div", { class: "pillar-card reveal", style: `transition-delay:${(i % 4) * 90}ms` }, [
         el("div", { class: "pillar-icon", text: p.icon }),
         el("h4", { text: p.title }),
         el("p", { text: p.desc })
@@ -94,9 +94,9 @@
   $("#roadmapTitle").textContent = C.roadmap.title;
   $("#roadmapLead").textContent = C.roadmap.lead;
   const track = $("#roadmapTrack");
-  C.roadmap.stages.forEach((s) => {
+  C.roadmap.stages.forEach((s, i) => {
     track.appendChild(
-      el("div", { class: "roadmap-card" }, [
+      el("div", { class: "roadmap-card reveal", style: `transition-delay:${i * 110}ms` }, [
         el("div", { class: "rc-year", text: s.year }),
         el("h3", { text: s.competition }),
         el("p", { text: s.objective })
@@ -118,7 +118,7 @@
   $("#regsLead").textContent = C.regsLead;
   const regsWrap = $("#regsAccordion");
   C.regulations.forEach((section, idx) => {
-    const item = el("div", { class: "reg-item" });
+    const item = el("div", { class: "reg-item reveal", style: `transition-delay:${(idx % 6) * 60}ms` });
     const q = el("button", { class: "reg-q", type: "button" }, [
       el("span", { text: section.title }),
       el("span", { class: "plus", text: "+" })
@@ -155,10 +155,10 @@
   $("#budgetAsk").textContent = C.budgetAsk;
   $("#budgetExternal").textContent = C.budgetExternal;
   const budgetBars = $("#budgetBars");
-  C.budgetCategories.forEach((b) => {
+  C.budgetCategories.forEach((b, i) => {
     const fill = el("div", { class: "bar-fill" });
     budgetBars.appendChild(
-      el("div", { class: "bar-row" }, [
+      el("div", { class: "bar-row reveal", style: `transition-delay:${i * 60}ms` }, [
         el("div", { class: "bar-label", text: b.name }),
         el("div", { class: "bar-track" }, [fill]),
         el("div", { class: "bar-amt", text: "₹" + b.amount.toLocaleString("en-IN") })
@@ -171,13 +171,15 @@
 
   /* ---------------- Sponsors ---------------- */
   const sponsorsRow = $("#sponsorsRow");
-  C.sponsors.forEach((s) => {
-    sponsorsRow.appendChild(el("div", { class: "sponsor-slot", text: s.name }));
+  C.sponsors.forEach((s, i) => {
+    sponsorsRow.appendChild(
+      el("div", { class: "sponsor-slot reveal", style: `transition-delay:${i * 70}ms`, text: s.name })
+    );
   });
 
   /* ---------------- Team ---------------- */
   const teamGrid = $("#teamGrid");
-  C.team.forEach((t) => {
+  C.team.forEach((t, i) => {
     const initials = t.name
       .split(" ")
       .map((w) => w[0])
@@ -185,7 +187,7 @@
       .join("")
       .toUpperCase();
     teamGrid.appendChild(
-      el("div", { class: "team-card" }, [
+      el("div", { class: "team-card reveal", style: `transition-delay:${(i % 4) * 80}ms` }, [
         el("div", { class: "team-avatar", text: initials }),
         el("h4", { text: t.name }),
         el("span", { text: t.role })
@@ -245,6 +247,21 @@
     { rootMargin: "-45% 0px -50% 0px" }
   );
   sections.forEach((s) => spy.observe(s));
+
+  // Scroll-reveal animations (fade + rise in as sections come into view)
+  const revealEls = $$(".reveal, .reveal-scale");
+  const revealObserver = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
+  );
+  revealEls.forEach((elToReveal) => revealObserver.observe(elToReveal));
 
   // Animated stat counters
   const counters = $$(".stat-num");
