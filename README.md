@@ -7,9 +7,9 @@ plain HTML/CSS/JS — no build step, no framework, works on GitHub Pages for fre
 
 ```
 maxtron-site/
-├── index.html          ← page structure only (rarely needs editing)
-├── css/style.css        ← all colors, fonts, spacing (theme lives at the top as CSS variables)
-├── js/content.js         ← ALL EDITABLE TEXT & DATA lives here (edit this for updates)
-├── js/main.js            ← renders content.js into the page (no need to touch this)
-└── assets/images/        ← put your real photos/logos here
+├── index.html         
+├── css/style.css       
+├── js/content.js         
+├── js/main.js            
+└── assets/images/        
 ```
